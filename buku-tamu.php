@@ -71,10 +71,12 @@ include_once('templates/header.php');
                                 <td><?= $tamu['no_hp'] ?></td>
                                 <td><?= $tamu['bertemu'] ?></td>
                                 <td><?= $tamu['kepentingan'] ?></td>
-                                <td><button class="btn btn-success" type="button">Ubah</button>
+                                <td>
+                                    <a class="btn btn-success" href="/buku-tamu/edit-tamu.php?id=<?=$tamu['id_tamu']?>">Ubah</a>
                                     <button class="btn btn-danger" type="button">Hapus</button>
                                 </td>
-                            </tr> <?php endforeach; ?>
+                            </tr> 
+                        <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                         <tr>
