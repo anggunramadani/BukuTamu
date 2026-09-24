@@ -176,6 +176,9 @@ $kodeTamu = "zt" . sprintf("%03s", $urutan);
 </div>
 <!-- /.container-fluid -->
 
+<?php
+include_once('templates/footer.php');
+?>
 
 <!-- Page level plugins -->
 <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -183,7 +186,3 @@ $kodeTamu = "zt" . sprintf("%03s", $urutan);
 
 <!-- Page level custom scripts -->
 <script src="assets/js/demo/datatables-demo.js"></script>
-
-<?php
-include_once('templates/footer.php');
-?>
