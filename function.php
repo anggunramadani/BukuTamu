@@ -72,16 +72,16 @@ function hapus_tamu($id)
     return mysqli_affected_rows($koneksi);
 }
 
-function tambah_user($user)
+function tambah_user($data)
 {
     global $koneksi;
 
-    $username = htmlspecialchars($user['username']);
-    $user_role = htmlspecialchars($user['user_role']);
+    $kode = htmlspecialchars($data["id_user"]);
+    $username = htmlspecialchars($data["username"]);
+    $password = htmlspecialchars($data["password"]);
+    $user_role = htmlspecialchars($data["user_role"]);
 
-    $query = "INSERT INTO user
-              VALUES
-              ('', '$username', '$user_role')";
+    $query = "INSERT INTO users VALUES ('$kode', '$username', '$password', '$user_role')";
 
     mysqli_query($koneksi, $query);
 
