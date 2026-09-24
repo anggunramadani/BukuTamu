@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +52,20 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+
+            <?php
+            // cek apabila ada user login maka tampilkan logout
+            if (isset($_SESSION['login'])) :
+            ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">
+                        <i class="fas fa-fw fa-power-off"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+
+            <?php endif; ?>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
