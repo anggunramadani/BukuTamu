@@ -37,7 +37,7 @@ include_once('templates/header.php');
                 <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Tambah Tamu</span>
+                <span class="text">Tambah User</span>
             </button>
         </div>
         <div class="card-body">
@@ -46,12 +46,8 @@ include_once('templates/header.php');
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Nama Tamu</th>
-                            <th>Alamat</th>
-                            <th>No HP</th>
-                            <th>Bertemu</th>
-                            <th>Kepentingan</th>
+                            <th>Username</th>
+                            <th>User Role</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -60,21 +56,17 @@ include_once('templates/header.php');
                         <?php
                         // penomoran auto-increment
                         $no = 1;
-                        // Query untuk memanggil semua data dari tabel buku_tamu
-                        $buku_tamu = query("SELECT * FROM buku_tamu");
-                        foreach ($buku_tamu as $tamu) : ?>
+                        // Query untuk memanggil semua data dari tabel users
+                        $users = query("SELECT * FROM users");
+                        foreach ($users as $user) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?= $tamu['tanggal'] ?></td>
-                                <td><?= $tamu['nama_tamu'] ?></td>
-                                <td><?= $tamu['alamat'] ?></td>
-                                <td><?= $tamu['no_hp'] ?></td>
-                                <td><?= $tamu['bertemu'] ?></td>
-                                <td><?= $tamu['kepentingan'] ?></td>
+                                <td><?= $user['username'] ?></td>
+                                <td><?= $user['user_role'] ?></td>
                                 <td>
-                                    <a class="btn btn-success" href="/buku-tamu/edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>
+                                    <a class="btn btn-success" href="/buku-tamu/edit-user.php?id=<?= $user['id_user'] ?>">Ubah</a>
                                     <a onclick="confirm('Apakah anda yakin ingin menghapus data ini?')"
-                                        class="btn btn-danger" href="hapus-tamu.php?id=<?= $tamu['id_tamu'] ?>">Hapus</a>
+                                        class="btn btn-danger" href="hapus-user.php?id=<?= $user['id_user'] ?>">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -82,12 +74,8 @@ include_once('templates/header.php');
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Nama Tamu</th>
-                            <th>Alamat</th>
-                            <th>No HP</th>
-                            <th>Bertemu</th>
-                            <th>Kepentingan</th>
+                            <th>Username</th>
+                            <th>User Role</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
@@ -101,7 +89,7 @@ include_once('templates/header.php');
 <?php
 
 // mengambil data barang dari tabel dengan kode terbesar
-$query = mysqli_query($koneksi, "SELECT max(id_tamu) as kodeTerbesar FROM buku_tamu");
+$query = mysqli_query($koneksi, "SELECT max(id_user) as kodeTerbesar FROM users");
 $data = mysqli_fetch_array($query);
 $kodeTamu = $data['kodeTerbesar'];
 
@@ -128,7 +116,7 @@ $kodeTamu = "zt" . sprintf("%03s", $urutan);
             </div>
             <div class="modal-body">
                 <form method="post" action="">
-                    <input type="hidden" name="id_tamu" id="id_tamu" value="<?= $kodeTamu ?>">
+                    <input type="hidden" name="id_user" id="id_user" value="<?= $kodeTamu ?>">
 
                     <div class="form-group row">
                         <label for="nama_tamu" class="col-sm-3 col-form-label">Nama Tamu</label>

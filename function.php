@@ -71,3 +71,19 @@ function hapus_tamu($id)
 
     return mysqli_affected_rows($koneksi);
 }
+
+function tambah_user($user)
+{
+    global $koneksi;
+
+    $username = htmlspecialchars($user['username']);
+    $user_role = htmlspecialchars($user['user_role']);
+
+    $query = "INSERT INTO user
+              VALUES
+              ('', '$username', '$user_role')";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
